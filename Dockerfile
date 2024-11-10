@@ -1,4 +1,5 @@
-FROM debian:12.7 # 基于 debian12 构建
+# 基于 debian12 构建
+FROM debian:12.7 
 
 # 复制源配置和公钥文件
 COPY debian.sources /tmp/
