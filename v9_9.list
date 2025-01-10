@@ -1,0 +1,9 @@
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+# 内网地址 http://mirrors.tencentyun.com/
+# debian9 已移入 archive 源，配置方式如下（各仓库按需使用）：
+# http://snapshot.debian.org/archive/debian/20190812T000000Z 
+deb http://mirrors.tencent.com/debian-archive/debian stretch main
+deb http://mirrors.tencent.com/debian-archive/debian stretch-backports main
+deb http://mirrors.tencent.com/debian-archive/debian stretch-backports-sloppy main
+deb http://mirrors.tencent.com/debian-archive/debian stretch-proposed-updates main
+deb http://mirrors.tencent.com/debian-archive/debian-security stretch/updates main
