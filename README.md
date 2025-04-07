@@ -1,5 +1,5 @@
 # docker ssh 
 
 ```
-docker build -t debianssh:01 .
+docker build -f Dockerfile -t debianssh:01 .
 ```
