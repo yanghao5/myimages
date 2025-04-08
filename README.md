@@ -1,7 +1,28 @@
 # docker ssh 
 
-[https://zhuanlan.zhihu.com/p/3194602332](https://zhuanlan.zhihu.com/p/3194602332)
+# Debian
 
 ```
-docker build -f Dockerfile -t debianssh:01 .
+# default build
+make debian127
+# set apt mirror and image tag
+make debian127 apt=aliyun tag=debianssh:01
+```
+
+# LLVM
+
+```
+# default build
+make llvm17
+
+# set base image and image tag
+make llvm17 image=debianssh:01 tag=llvmop:01
+```
+
+# build clean
+
+```
+# NB
+# it will remove all prune resource
+make clean
 ```
