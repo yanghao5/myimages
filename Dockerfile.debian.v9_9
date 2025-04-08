@@ -1,0 +1,29 @@
+# 基于 debian9 构建
+FROM debian:9.9
+
+ARG APT_MIRROR=apt-mirror
+
+# 复制 APT 源和公钥
+COPY ${APT_MIRROR}/debian.v9.list /tmp/
+COPY pubkey/remote.pub /tmp/
+
+# 更改源，安装必要的软件包
+RUN mv /tmp/debian.v9.list /etc/apt/sources.list && \
+    apt-get -o Acquire::https::Verify-Peer=false update && \
+    apt-get -o Acquire::https::Verify-Peer=false install -y ca-certificates apt-transport-https && \
+    apt-get update && \
+    apt-get install -y neovim git ssh wget curl && \
+    mkdir -p /root/.ssh && \
+    cat /tmp/remote.pub >> /root/.ssh/authorized_keys && \
+    chmod 600 /root/.ssh/authorized_keys && \
+    rm -rf /tmp/* && \
+    rm -rf /var/cache/apt/* && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
+# 创建 SSHD 运行目录
+RUN mkdir -p /run/sshd && chmod 755 /run/sshd
+    
+# 修改 ssh 配置
+# 允许 root 和密钥登录
+RUN sed -i '$a # 允许 root 用户登录\nPermitRootLogin yes # 允许密钥登录\nPubkeyAuthentication yes\nAuthorizedKeysFile /root/.ssh/authorized_keys' /etc/ssh/sshd_config 
