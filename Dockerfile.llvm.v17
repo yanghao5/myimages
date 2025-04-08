@@ -1,0 +1,13 @@
+ARG BASE_IMAGE=debian127:01
+
+# 基于 debian12 构建
+FROM ${BASE_IMAGE} 
+
+# 更改源，安装必要的软件包
+RUN apt-get update && \
+apt-get install wget lsb-release wget software-properties-common gnupg -y && \
+    cd ~ && wget https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/llvm.sh && \
+    chmod +x llvm.sh && \
+    ./llvm.sh 17 all -m https://mirrors.tuna.tsinghua.edu.cn/llvm-apt
+
+CMD ["/bin/bash"]
