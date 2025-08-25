@@ -3,6 +3,8 @@
 # Debian
 
 ```
+go run main.go debian127
+go run main.go debian127 -apt aliyun
 ```
 
 # LLVM

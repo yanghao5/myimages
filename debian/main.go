@@ -74,6 +74,22 @@ func debian127(apt string) {
 			"-t", tag,
 			".",
 		}
+	case "aliyun":
+		cmds = []string{
+			"docker", "build",
+			"-f", "Dockerfile.debian.v12_7",
+			"--build-arg", "APT_MIRROR=apt-mirror/aliyun",
+			"-t", tag,
+			".",
+		}
+	case "aliyun_vps":
+		cmds = []string{
+			"docker", "build",
+			"-f", "Dockerfile.debian.v12_7",
+			"--build-arg", "APT_MIRROR=apt-mirror/aliyun",
+			"-t", tag,
+			".",
+		}
 	}
 
 	cmd := exec.Command(cmds[0], cmds[1:]...)
