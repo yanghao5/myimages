@@ -3,10 +3,6 @@
 # Debian
 
 ```
-# default build
-make debian127
-# set apt mirror and image tag
-make debian127 apt=aliyun tag=debianssh:01
 ```
 
 # LLVM

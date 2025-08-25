@@ -26,4 +26,4 @@ RUN mkdir -p /run/sshd && chmod 755 /run/sshd
     
 # 修改 ssh 配置
 # 允许 root 和密钥登录
-RUN sed -i '$a # 允许 root 用户登录\nPermitRootLogin yes # 允许密钥登录\nPubkeyAuthentication yes\nAuthorizedKeysFile /root/.ssh/authorized_keys' /etc/ssh/sshd_config 
+RUN sed -i '$a PermitRootLogin yes\nPubkeyAuthentication yes\nAuthorizedKeysFile /root/.ssh/authorized_keys' /etc/ssh/sshd_config 
